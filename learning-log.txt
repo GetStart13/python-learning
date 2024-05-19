@@ -1,0 +1,8 @@
+Python 学习历程
+
+
+2024-05-14 开始学习 Python 基础教程。
+2024-05-15 学习 Python 基础教程。
+2024-05-16 Python 基础教程学习完毕。
+2024-05-17 学习 Python 项目管理，编写 python-learning.md 文件。
+2024-05-19 编写 python-learning.md 完成。
