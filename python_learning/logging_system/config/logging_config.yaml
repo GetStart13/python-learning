@@ -12,9 +12,9 @@ formatters:
 filters:
   sensitive_filter:
     # '()' 用于指定用于实例化对象的可调用名称。需要使用自定义过滤器类的全名，包括其包和模块名。
-    (): logging_system.logging_filters.keyword_filters.SensitiveFilter
+    (): python_learning.logging_system.logging_filters.keyword_filters.SensitiveFilter
   warning_filter:
-    (): logging_system.logging_filters.keyword_filters.WarningFilter
+    (): python_learning.logging_system.logging_filters.keyword_filters.WarningFilter
 
 handlers:
   console:

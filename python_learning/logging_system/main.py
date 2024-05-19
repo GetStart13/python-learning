@@ -84,7 +84,7 @@ def test():
     logger_level_match.info("INFO 级别的信息高于 DEBUG，低于 WARN，因此 WARN 级别的 handler 和 logger 不会处理 INFO 信息")
 
     try:
-        raise Exception("测试过滤器")
+        raise Exception("这是故意抛出的异常，用于测试过滤器。")
     except Exception as e:
         # 带“sensitive”字符串的信息能够被输出
         logger_level_match.critical('This is sensitive message.', exc_info=e)
