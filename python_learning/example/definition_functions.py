@@ -17,7 +17,10 @@ def function(x, y, *_tuple, **keywords):
     print("y:", y)
     for item in _tuple:
         print(item)
-    print("keymap:", keywords)
+    if keywords:
+        print("keymap:", keywords)
+        print("key:", keywords["key"])  # 通过 [] 直接访问 key 要求必须存在 key
+        print("tuple:", keywords.get("tuple"))  # 通过 `get()` 函数访问不要求 key 必须存在，但可能返回 `None`
 
 
 def special_parameters(pos1, pos2="default", /, pos_or_kwd1="", pos_or_kwd2="", *, kwd1, kwd2):

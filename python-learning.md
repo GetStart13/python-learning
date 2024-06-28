@@ -273,6 +273,12 @@ set POETRY_HOME=D:\Python\Scripts&& python install-poetry.py
 
 Poetry 支持很多配置自定义，你可以根据你的习惯爱好更改这些配置，或者更改一些你有强迫症的配置。
 
+#### 查看配置
+
+```shell
+poetry config --list
+```
+
 #### 配置方式
 
 ##### 命令配置
@@ -389,6 +395,8 @@ poetry env info
 poetry shell
 ```
 
+这会创建一个新的 shell 窗口，要撤销激活且退出新 shell 窗口，使用 `exit` 命令，`deactivate` 命令仅撤销激活，但不会退出新 shell 窗口。
+
 ##### 5. 版本控制
 
 如果你的项目在版本控制中（如 git）你应将 `pyproject.toml` 和 `poetry.lock` 文件提交到版本控制系统中。
@@ -410,6 +418,8 @@ poetry build
 ### 题外话
 
 #### 一些主观偏好
+
+##### 创建虚拟环境
 
 对于创建虚拟环境，如果你不想用 Poetry 提供的策略，你可以使用 Python 提供的工具模块（venv）在项目根目录下创建虚拟环境（.venv），因为 Poetry 同样优先使用此目录。
 
@@ -451,7 +461,7 @@ pipreqs [options] [<path>]
 pipreqs --ignore .venv
 ```
 
-如果你的项目根目录下只有项目源码目录（标准的项目结构也是这样的），你可以直接指定扫描项目源码目录（这就不需要排除虚拟环境目录）：
+如果你的项目根目录下只有项目源码目录（标准的项目结构也是这样的），你可以直接指定扫描项目源码目录（这就不需要排除虚拟环境目录），然后会在源码目录下生成 `requirements.txt` 文件，把它复制到项目根目录即可：
 
 ```shell
 pipreqs ./project_name

@@ -5,7 +5,7 @@ from python_learning.example.definition_functions import *
 
 class Test(TestCase):
     def test_function(self):
-        function("x", "y", "z", "a", "b", "c", key="key", word="word")
+        function("x", "y", "z", "a", "b", "c", key="key", word="word", tuple=(1, 2, 3))
         # ** 表示拆包
         function("x", "y", "z", "a", "b", "c", **{"key": "key", "word": "word"})
         self.assertTrue(True)
