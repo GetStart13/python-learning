@@ -357,9 +357,13 @@ poetry init
 
 如果你的项目中已经有 `requirements.txt` 文件，你可以跳过手动添加依赖的部分。如果没有，可以使用一些 Python 工具模块生成这个文件。
 
-##### 2. 指定项目依赖
+##### 2. 项目依赖管理
 
-你应该将项目依赖交由 Poetry 管理，要指定一个依赖，可以使用 `add` 命令：
+你应该将项目依赖交由 Poetry 管理，依赖的安装和删除都应该通过 Poetry 操作。
+
+###### 安装依赖
+
+要指定一个依赖（安装依赖），可以使用 `add` 命令：
 
 ```shell
 poetry add <package-name>
@@ -377,7 +381,15 @@ foreach ($dependency in Get-Content -Path "requirements.txt") { `
 }
 ```
 
-PowerShell 通过使用反引号（`）可以将每一行指令连接到下一行，从而形成一个多行指令。
+> PowerShell 通过使用反引号（`）可以将每一行指令连接到下一行，从而形成一个多行指令。
+
+###### 移除依赖
+
+要从项目中移除一个依赖，可以使用 `remove` 命令：
+
+```shell
+poetry remove <package-name>
+```
 
 ##### 3. 检查虚拟环境
 
