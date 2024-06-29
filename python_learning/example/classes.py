@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 class Superman:
-    power = "unknown"  # 类属性，不可变属性不能够通过对象实例操作
+    power = "unknown"  # 类属性，不可变属性不能够通过对象实例操作（静态变量）
     organization = []
 
     def __init__(self, name):
@@ -58,6 +58,10 @@ class GreenBigMan(Superman):
 class TinySpider(SpiderMan, IronMan):  # 多重继承，继承的属性的搜索规则是深度优先、从左到右
     power = "spider-iron-clothes"
 
+    def append_instance_properties(self):
+        # 未在 `__init__` 方法中声明的属性，访问时将会报错
+        self.property = "New property."
+
 
 # 数据类型
 @dataclass
@@ -80,6 +84,8 @@ if __name__ == "__main__":
     tiny_spider = TinySpider("tiny Peter Parker")
     # 先从本类中查找，未找到则查找父类，仍未找到则向右查找继承类，并继续按继承深度查找
     tiny_spider.invent("Iron-Clothes")
+    # 未在 `__init__` 方法中声明的属性，访问时将会报错
+    # print(f"tiny_spider.property is {tiny_spider.property}")
 
     Banner = GreenBigMan("Banner", "Green Big Bomb!", "Everywhere", "Black Spider Women")
     # 虽然可以调用，但不建议，应遵循约定
@@ -93,9 +99,11 @@ if __name__ == "__main__":
     SmallChili = IronMan("SmallChili")
     # 查看类变量（共享变量）
     print(f"TonyStark's power is {TonyStark.power}.")
-    print(f"SmallChili power is {SmallChili.power}.")
-    # GreenBigMan 的 power 赋值并没有影响类的不可变变量
-    print(f"Banner's power is {GreenBigMan.power}.")
+    print(f"SmallChili's power is {SmallChili.power}.")
+    # GreenBigMan 实例化时对 power 的赋值并没有影响类属性，而是重新声明了一个实例属性
+    print(f"GreenBigMan's power is {GreenBigMan.power}.")
+    # GreenBigMan 的实例属性（Banner）与类属性同名，但值不同
+    print(f"Banner's power is {Banner.power}.")
 
     TonyStark.invite("me")
     print("A mutable object as class variable that everyone can change it:", Superman.organization)
